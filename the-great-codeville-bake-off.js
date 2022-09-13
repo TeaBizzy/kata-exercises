@@ -1,21 +1,20 @@
 const chooseRecipe = function(bakeryA, bakeryB, recipes) {
-  for(let recipe = 0; recipe < recipes.length; recipe++) {
-    let aHasIngredients = false;
-    let bHasIngredients = false;
-    for(let aIngredients = 0; aIngredients < bakeryA.length; aIngredients++){
-      if(bakeryA[aIngredients] === recipes[recipe].ingredients[0] || bakeryA[aIngredients] === recipes[recipe].ingredients[1]) {
-        aHasIngredients = true;
-      }
-    }
-    for(let bIngredients = 0; bIngredients < bakeryB.length; bIngredients++) {
-      if(bakeryB[bIngredients] === recipes[recipe].ingredients[0] || bakeryB[bIngredients] === recipes[recipe].ingredients[1]) {
-        bHasIngredients = true;
-      }
-    }
-    if(aHasIngredients && bHasIngredients) {
-      return recipes[recipe].name;
+  // Loop through each recipe.
+  for(let recipeIdx = 0; recipeIdx < recipes.length; recipeIdx++) {
+    if(findIngredients(bakeryA,recipes[recipeIdx]) && findIngredients(bakeryB,recipes[recipeIdx])) {
+      return recipes[recipeIdx].name;
     }
   }
+}
+
+function findIngredients(bakery, recipe) {
+  for(let ingredients = 0; ingredients < bakery.length; ingredients++){
+    if(bakery[ingredients] === recipe.ingredients[0] || bakery[ingredients] === recipe.ingredients[1]) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 let bakeryA = ['saffron', 'eggs', 'tomato paste', 'coconut', 'custard'];
