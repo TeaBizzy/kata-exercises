@@ -2,8 +2,6 @@ const makeCase = function(input, cases) {
  
   if(!Array.isArray(cases)) {
     cases = [cases];
-  } else {
-    cases = cases;
   }
 
   let outputString = input
